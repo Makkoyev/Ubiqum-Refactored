@@ -1,5 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500&display=swap");
 html * {
   padding: 0;
   margin: 0;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.nav-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: black;
+  color: white;
+}
+
+.nav-bar > div {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.nav-bar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.nav-bar ul li {
+  list-style: none;
+  padding: 1rem;
+}
+
+.nav-bar ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+}
+
+.inner-page {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 3px;
+  background-color: #dddddd;
+  -webkit-box-shadow: 2px 2px 2px #8a8d91;
+          box-shadow: 2px 2px 2px #8a8d91;
+}
+
+.inner-filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #dddddd;
+  -webkit-box-shadow: 2px 2px 2px #8a8d91;
+          box-shadow: 2px 2px 2px #8a8d91;
+  border-radius: 3px;
+  padding: .4rem;
+  margin: 1rem;
+}
+
+.inner-filters #filters {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inner-filters #filters label {
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.inner-filters #filters label input[type=checkbox] {
+  vertical-align: center;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
+
+.inner-filters select {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  cursor: pointer;
+  padding: .2rem;
+  border-radius: 3px;
+}
+
+table {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background-color: #dddddd;
+}
+
+table thead > tr > th {
+  width: 20%;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+table tbody > tr > th {
+  font-weight: 400;
+}
+
+table td {
+  padding: .4rem;
 }
 /*# sourceMappingURL=style.css.map */

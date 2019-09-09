@@ -1,4 +1,110 @@
+// Color Palette
+$color1: rgb(2, 252, 218);
+$color2: rgba(255, 252, 249, 1);
+$color3: rgba(6, 214, 160, 1);
+$color4: rgba(255, 209, 102, 1);
+$color5: rgba(239, 71, 111, 1);
+$color6: rgb(221, 221, 221);
+$color7: rgba(138, 141, 145, 1);
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500&display=swap');
+
 html * {
     padding: 0;
     margin: 0;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-evenly;
+    background: black;
+    color: white;
+
+    >div {
+        align-self: center;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-evenly;
+
+        li {
+            list-style: none;
+            padding: 1rem;
+
+            a {
+                text-decoration: none;
+                text-transform: uppercase;
+                color: white;
+            }
+        }
+    }
+}
+
+.inner-page {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 3px;
+    background-color: $color6;
+    box-shadow: 2px 2px 2px $color7;
+}
+
+.inner-filters {
+    display: flex;
+    justify-content: space-around;
+    background-color: $color6;
+    box-shadow: 2px 2px 2px $color7;
+    border-radius: 3px;
+    padding: .4rem;
+    margin: 1rem;
+
+    #filters {
+        flex-basis: 50%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        label {
+            cursor: pointer;
+            text-transform: uppercase;
+
+            input[type=checkbox] {
+                vertical-align: center;
+                position: relative;
+                top: 2px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    select {
+        align-self: flex-start;
+        cursor: pointer;
+        padding: .2rem;
+        border-radius: 3px;
+    }
+}
+
+table {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    background-color: $color6;
+    thead > tr > th {
+        width: 20%;
+        padding: 1rem;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+    tbody > tr > th {
+        font-weight: 400;
+    }
+    td {
+        padding: .4rem;
+    }
 }
