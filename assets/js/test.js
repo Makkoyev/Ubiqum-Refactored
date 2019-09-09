@@ -11,19 +11,31 @@ async function loadData() {
             "x-api-key": "2VpGVQrEodHgSlKxaOdIhIwh9UWtKcGh9K2fRfAL"
         }
     });
+    table.innerHTML = 'Data is loading...';
     return await response.json();
 }
 
 loadData().then(data => {
     let selector = document.getElementById('selector');
-    let members = data.results[0].members
+    let members = data.results[0].members;
+    console.log(members);
+    //Invoke createStateFilter
+    createStateFilter(members);
+    // Table generation
+    createCongressTable(members);
+});
+
+function createStateFilter(members){
     // Filter states
     let mapStates = members.map(member => member.state).sort();
     let states = [... new Set(mapStates)].forEach(element => {
         selector.innerHTML += `<option> ${element} </option>`;
     });
-    // Table generation
+}
+
+function createCongressTable(members){
     let table = document.getElementById('table');
+    table.innerHTML = '';
     console.log(table.innerHTML);
     members.forEach(element => {
         fullName = () => {
@@ -35,10 +47,7 @@ loadData().then(data => {
         }
         table.innerHTML += `<tr><td> ${fullName()} </td><td> ${element.party} </td><td> ${element.state} </td><td> ${element.seniority} </td><td> ${element.votes_with_party_pct} </td></tr>`;
     })
-});
-
-
-
+}
 
 
 
