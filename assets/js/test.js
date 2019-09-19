@@ -16,27 +16,49 @@ async function loadData() {
 }
 
 loadData().then(data => {
-    let selector = document.getElementById('selector');
     let members = data.results[0].members;
-    console.log(members);
-    //Invoke createStateFilter
-    createStateFilter(members);
-    // Table generation
-    createCongressTable(members);
+    document.getElementById('selector').innerHTML = statesMenu(members);
+    document.getElementById('filters').addEventListener('click', () => regenerateTable(members));
+    document.getElementById('selector').addEventListener('change', () => regenerateTable(members));
+    generateTable(members);
 });
 
-function createStateFilter(members){
+function statesMenu(members){
     // Filter states
+    let statesMenu = `<option>All</option>`;
     let mapStates = members.map(member => member.state).sort();
     let states = [... new Set(mapStates)].forEach(element => {
-        selector.innerHTML += `<option> ${element} </option>`;
+        statesMenu += `<option value=${element}> ${element} </option>`;
     });
+    return statesMenu;
 }
 
-function createCongressTable(members){
+function partyFilter(members){
+    let cbs = Array.from(document.querySelectorAll('input[name=checkbox]:checked')).map(cb => cb.value);
+    let filter = members.filter(member => cbs.includes(member.party));
+    if (cbs.length === 0) {return members;}
+    else {return filter;}
+}
+
+function stateFilter(members){
+    var statesMenu = document.getElementById('selector');
+    var value= statesMenu[statesMenu.selectedIndex].value;
+    let filter = members.filter (member => member.state === value);
+    if (value === "All"){return members;}
+    else {return filter;}
+}
+
+function regenerateTable(members){
+    var filterParty = stateFilter(members);
+    var filterState = partyFilter(filterParty);
+    var result = filterState;
+    if (result === 0) {generateTable(members);}
+    else {generateTable(result);}  
+}
+
+function generateTable(members){
     let table = document.getElementById('table');
     table.innerHTML = '';
-    console.log(table.innerHTML);
     members.forEach(element => {
         fullName = () => {
             if (element.middle_name == null) {
